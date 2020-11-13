@@ -29,43 +29,43 @@ $grados = $grados->fetchAll();
 <nav>
     <ul>
         <li><a href="inicio.view.php">Inicio</a> </li>
-        <li class="active"><a href="alumnos.view.php">Registro de Alumnos</a> </li>
+         <li class="active"><a href="alumnos.view.php">Registro de Alumnos</a> </li>
         <li><a href="listadoalumnos.view.php">Listado de Alumnos</a> </li>
         <li><a href="notas.view.php">Registro de Notas</a> </li>
         <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
         <li class="right"><a href="logout.php">Salir</a> </li>
-
+ 
     </ul>
 </nav>
 
 <div class="body">
     <div class="panel">
-            <h4>Registro de Alumnos</h4>
+            <h4>Registro de docentes</h4>
             <form method="post" class="form" action="procesardocente.php">
-                <label>Nombres</label><br>
-                <input type="text" required name="nombres" maxlength="45">
+                <label>Nombre docente</label><br>
+                <input type="text" required name="nombresDoc" maxlength="45">
                 <br>
-                <label>Apellidos</label><br>
-                <input type="text" required name="apellidos" maxlength="45">
+                <label>Apellido docente</label><br>
+                <input type="text" required name="apellidosDoc" maxlength="45">
                 <br><br>
-                <label>No de Lista</label><br>
-                <input type="number" min="1" class="number" name="numlista">
+                <label>No de carnet</label><br>
+                <input type="number" min="1" class="number" name="numcarnetDoc">
                 <br><br>
                 <label>Sexo</label><br><input required type="radio" name="genero" value="M"> Masculino
-                <input type="radio" name="genero" required value="F"> Femenino
+                <input type="radio" name="sexoDoc" required value="F"> Femenino
                 <br><br>
-                <label>Grado</label><br>
+<!--                 <label>Grado</label><br>
                 <select name="grado" required>
                     <?php foreach ($grados as $grado):?>
                         <option value="<?php echo $grado['id'] ?>"><?php echo $grado['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>
-                <br><br>
-                <label>Sección</label><br>
+                <br><br> -->
+<!--                 <label>Sección</label><br>
 
                     <?php foreach ($secciones as $seccion):?>
                         <input type="radio" name="seccion" required value="<?php echo $seccion['id'] ?>">Sección <?php echo $seccion['nombre'] ?>
-                    <?php endforeach;?>
+                    <?php endforeach;?> -->
 
                 <br><br>
                 <button type="submit" name="insertar">Guardar</button> <button type="reset">Limpiar</button> <a class="btn-link" href="listadoalumnos.view.php">Ver Listado</a>
