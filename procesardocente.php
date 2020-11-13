@@ -1,20 +1,19 @@
 <?php
 if(!$_POST){
-    header('location: alumnos.view.php');
+    header('location: docentes.view.php');
 }
 else {
     //incluimos el archivo funciones que tiene la conexion
     require 'functions.php';
     //Recuperamos los valores que vamos a llenar en la BD
-    $nombres = htmlentities($_POST ['nombres']);
-    $apellidos = htmlentities($_POST ['apellidos']);
-    $genero = htmlentities($_POST['genero']);
-    $numlista = htmlentities($_POST['numlista']);
-    $idgrado = htmlentities($_POST['grado']);
-    $idseccion = htmlentities($_POST['seccion']);
+    $nombres = htmlentities($_POST ['nombresDoc']);
+    $apellidos = htmlentities($_POST ['apellidosDoc']);
+    $numcarnet= htmlentities($_POST ['numcarnetDoc']);
+     $sexo = htmlentities($_POST['sexoDoc']);
+   
 
-    //insertar es el nombre del boton guardar que esta en el archivo alumnos.view.php
-    if (isset($_POST['insertar'])){
+    //insertar es el nombre del boton guardar que esta en el archivo docentes.view.php
+    if (isset($_POST['insertarDoc'])){
 
         $result = $conn->query("insert into alumnos (num_lista, nombres, apellidos, genero, id_grado, id_seccion) values ('$numlista', '$nombres', '$apellidos', '$genero', '$idgrado','$idseccion' )");
         if (isset($result)) {
