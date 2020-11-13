@@ -70,7 +70,7 @@ $grados = $grados->fetchAll();
                     <?php endforeach;?> -->
 
                 <br><br>
-                <button type="submit" name="insertadoc">Guardar</button> <button type="reset">Limpiar</button> <a class="btn-link" href="listadoalumno.view.php">Ver Listado</a>
+                <button type="submit" name="insertadoc">Guardar</button> <button type="reset">Limpiar</button> <a class="btn-link" href="listadodocentes.view.php">Ver Listado</a>
                 <br><br>
                 <!--mostrando los mensajes que recibe a traves de los parametros en la url-->
                 <?php
