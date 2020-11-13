@@ -21,6 +21,7 @@ permisos($permisos);
     <ul>
         <li class="active"><a href="inicio.view.php">Inicio</a> </li>
         <li><a href="alumnos.view.php">Registro de Alumnos</a> </li>
+        <li><a href="docentes.view.php">Registro de docentes</a> </li>
         <li><a href="listadoalumnos.view.php">Listado de Alumnos</a> </li>
         <li><a href="notas.view.php">Registro de Notas</a> </li>
         <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
