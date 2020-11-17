@@ -40,7 +40,7 @@ $alumnos = $alumnos->fetchAll();
             <h4>Listado de Alumnos</h4>
             <table class="table" cellspacing="0" cellpadding="0">
                 <tr>
-                    <th>No de<br>lista</th><th>Apellidos</th><th>Nombres</th><th>Genero</th><th>Grado</th><th>Seccion</th>
+                    <th>No de<br>lista</th><th>Apellidos</th><th>Nombres</th><th>Genero</th><th>Año</th><th>Seccion</th>
                     <th>Editar</th><th>Eliminar</th>
                 </tr>
                 <?php foreach ($alumnos as $alumno) :?>

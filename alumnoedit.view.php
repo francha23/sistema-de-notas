@@ -69,10 +69,10 @@ if(isset($_GET['id'])) {
                 <label>Sexo</label><br><input required type="radio" name="genero" <?php if($alumno['genero'] == 'M'){ echo "checked";} ?> value="M"> Masculino
                 <input type="radio" name="genero" required value="F" <?php if($alumno['genero'] == 'F') { echo "checked";} ?>> Femenino
                 <br><br>
-                <label>Grado</label><br>
-                <select name="grado" required>
-                    <?php foreach ($grados as $grado):?>
-                        <option value="<?php echo $grado['id'] ?>" <?php if($alumno['id_grado'] == $grado['id']) { echo "selected";} ?> ><?php echo $grado['nombre'] ?></option>
+                <label>Año</label><br>
+                <select name="año" required>
+                    <?php foreach ($año as $año):?>
+                        <option value="<?php echo $año['id'] ?>" <?php if($alumno['id_año'] == $año['id']) { echo "selected";} ?> ><?php echo $año['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>
                 <br><br>
