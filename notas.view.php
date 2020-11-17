@@ -54,7 +54,7 @@ $secciones = $secciones->fetchAll();
                ?>
 
             <form method="get" class="form" action="notas.view.php">
-                <label>Seleccione el Grado</label><br>
+                <label>Seleccione el Año</label><br>
                 <select name="grado" required>
                     <?php foreach ($grados as $grado):?>
                         <option value="<?php echo $grado['id'] ?>"><?php echo $grado['nombre'] ?></option>
