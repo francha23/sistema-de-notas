@@ -60,6 +60,12 @@ $secciones = $secciones->fetchAll();
                         <option value="<?php echo $grado['id'] ?>"><?php echo $grado['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>
+                <label>Seleccione la Carera</label><br>
+                <select name="carrera" required>
+                    <?php foreach ($carrera as $gcarrera):?>
+                        <option value="<?php echo $carrera['id'] ?>"><?php echo $carrera['nombre'] ?></option>
+                    <?php endforeach;?>
+                </select>
                 <br><br>
                 <label>Seleccione la Materia</label><br>
                 <select name="materia" required>

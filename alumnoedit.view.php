@@ -16,6 +16,11 @@ if(isset($_GET['id'])) {
     $secciones->execute();
     $secciones = $secciones->fetchAll();
 
+//consulta de carrera
+    $carrera = $conn->prepare("select * from carrera");
+    $carrera->execute();
+    $carrera = $carrera->fetchAll();
+
 //consulta de grados
     $grados = $conn->prepare("select * from grados");
     $grados->execute();
@@ -69,6 +74,12 @@ if(isset($_GET['id'])) {
                 <label>Sexo</label><br><input required type="radio" name="genero" <?php if($alumno['genero'] == 'M'){ echo "checked";} ?> value="M"> Masculino
                 <input type="radio" name="genero" required value="F" <?php if($alumno['genero'] == 'F') { echo "checked";} ?>> Femenino
                 <br><br>
+                <label>Carrera</label><br>
+                <select name="Carrera" required>
+                    <?php foreach ($carrera as carrera):?>
+                        <option value="<?php echo $carrera['id'] ?>" <?php if($alumno['idcarrera'] == $carrera['id']) { echo "selected";} ?> ><?php echo $carrera['nombre'] ?></option>
+                    <?php endforeach;?>
+                </select>
                 <label>Año</label><br>
                 <select name="año" required>
                     <?php foreach ($año as $año):?>

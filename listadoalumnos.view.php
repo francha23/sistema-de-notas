@@ -40,13 +40,13 @@ $alumnos = $alumnos->fetchAll();
             <h4>Listado de Alumnos</h4>
             <table class="table" cellspacing="0" cellpadding="0">
                 <tr>
-                    <th>No de<br>lista</th><th>Apellidos</th><th>Nombres</th><th>Genero</th><th>Año</th><th>Seccion</th>
+                    <th>No de<br>lista</th><th>Apellidos</th><th>Nombres</th><th>Genero</th><th>Carrera</th><th>Año</th><th>Seccion</th>
                     <th>Editar</th><th>Eliminar</th>
                 </tr>
                 <?php foreach ($alumnos as $alumno) :?>
                 <tr>
                     <td align="center"><?php echo $alumno['num_lista'] ?></td><td><?php echo $alumno['apellidos'] ?></td>
-                    <td><?php echo $alumno['nombres'] ?></td><td align="center"><?php echo $alumno['genero'] ?></td>
+                    <td><?php echo $alumno['nombres'] ?></td><td align="center"><?php echo $alumno['genero'] ?></td><td>
                     <td align="center"><?php echo $alumno['grado'] ?></td><td align="center"><?php echo $alumno['seccion'] ?></td>
                     <td><a href="alumnoedit.view.php?id=<?php echo $alumno['id'] ?>">Editar</a> </td>
                     <td><a href="alumnodelete.php?id=<?php echo $alumno['id'] ?>">Eliminar</a> </td>

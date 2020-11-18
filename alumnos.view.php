@@ -56,6 +56,13 @@ $grados = $grados->fetchAll();
                 <label>Sexo</label><br><input required type="radio" name="genero" value="M"> Masculino
                 <input type="radio" name="genero" required value="F"> Femenino
                 <br><br>
+                <label>Carrera</label><br>
+                <select name="carrera" required>
+                    <?php foreach ($carrera as $carrera):?>
+                        <option value="<?php echo $carrera['id'] ?>"><?php echo $carrera['nombre'] ?></option>
+                    <?php endforeach;?>
+                </select>
+                <br><br>
                 <label>Año</label><br>
                 <select name="año" required>
                     <?php foreach ($grados as $grado):?>

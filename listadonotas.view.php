@@ -51,12 +51,18 @@ $secciones = $secciones->fetchAll();
         <?php
         if(!isset($_GET['consultar'])){
             ?>
-            <p>Seleccione el año, la materia y la sección</p>
+            <p>Seleccione el año,carrera,materia y la sección</p>
             <form method="get" class="form" action="listadonotas.view.php">
                 <label>Seleccione el Año</label><br>
                 <select name="grado" required>
                     <?php foreach ($grados as $grado):?>
                         <option value="<?php echo $grado['id'] ?>"><?php echo $grado['nombre'] ?></option>
+                    <?php endforeach;?>
+                </select>
+                <label>Seleccione la Carrera</label><br>
+                <select name="carrera" required>
+                    <?php foreach ($carrera as $carrera):?>
+                        <option value="<?php echo $carrera['id'] ?>"><?php echo $carrera['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>
                 <br><br>
