@@ -40,7 +40,7 @@ $alumnos = $alumnos->fetchAll();
             <h4>Listado de Alumnos</h4>
             <table class="table" cellspacing="0" cellpadding="0">
                 <tr>
-                    <th>No de<br>lista</th><th>Apellidos</th><th>Nombres</th><th>Genero</th><th>Carrera</th><th>Año</th><th>Seccion</th>
+                    <th>No de<br>Carnet</th><th>Apellidos</th><th>Nombres</th><th>Genero</th><th>Carrera</th><th>Año</th><th>Seccion</th>
                     <th>Editar</th><th>Eliminar</th>
                 </tr>
                 <?php foreach ($alumnos as $alumno) :?>
@@ -66,13 +66,3 @@ $alumnos = $alumnos->fetchAll();
                 ?>
 
 
-        </div>
-</div>
-
-<footer>
-    <p>Derechos reservados &copy; 2020</p>
-</footer>
-
-</body>
-
-</html>

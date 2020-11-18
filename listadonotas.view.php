@@ -9,6 +9,11 @@ $materias = $conn->prepare("select * from materias");
 $materias->execute();
 $materias = $materias->fetchAll();
 
+//consulta las carreras
+$carreras = $conn->prepare("select * from carreras order by nombre asc");
+$carreras->execute();
+$carreras = $carreras->fetchAll();
+
 //consulta de grados
 $grados = $conn->prepare("select * from grados");
 $grados->execute();
@@ -59,10 +64,10 @@ $secciones = $secciones->fetchAll();
                         <option value="<?php echo $grado['id'] ?>"><?php echo $grado['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>
-                <label>Seleccione la Carrera</label><br>
+                <label>Seleccione las Carreras</label><br>
                 <select name="carrera" required>
-                    <?php foreach ($carrera as $carrera):?>
-                        <option value="<?php echo $carrera['id'] ?>"><?php echo $carrera['nombre'] ?></option>
+                    <?php foreach ($carreras as $carrera):?>
+                        <option value="<?php echo $carrera['idcarrera'] ?>"><?php echo $carrera['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>
                 <br><br>
