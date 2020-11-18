@@ -16,7 +16,7 @@ if(isset($_GET['id'])) {
     $secciones->execute();
     $secciones = $secciones->fetchAll();
 
-//consulta de carrera
+//consulta de carreras
     $carrera = $conn->prepare("select * from carrera");
     $carrera->execute();
     $carrera = $carrera->fetchAll();

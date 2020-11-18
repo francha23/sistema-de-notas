@@ -10,7 +10,7 @@ $secciones->execute();
 $secciones = $secciones->fetchAll();
 
 //consulta las carreras
-$carreras = $conn->prepare("select * from carrera");
+$carreras = $conn->prepare("select * from carreras order by nombre asc");
 $carreras->execute();
 $carreras = $carreras->fetchAll();
 
@@ -55,8 +55,8 @@ $grados = $grados->fetchAll();
                 <label>Apellidos</label><br>
                 <input type="text" required name="apellidos" maxlength="45">
                 <br><br>
-                <label>No de Lista</label><br>
-                <input type="number" min="1" class="number" name="numlista">
+                <label>No de Carnet</label><br>
+                <input type="text" required name="numlista">
                 <br><br>
                 <label>Sexo</label><br><input required type="radio" name="genero" value="M"> Masculino
                 <input type="radio" name="genero" required value="F"> Femenino
@@ -64,12 +64,12 @@ $grados = $grados->fetchAll();
                 <label>Carreras</label><br>
                 <select name="carreras" required>
                     <?php foreach ($carreras as $carrera):?>
-                        <option value="<?php echo $carrera['id'] ?>"><?php echo $carrera['nombre'] ?></option>
+                        <option value="<?php echo $carrera['idcarrera'] ?>"><?php echo $carrera['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>
                 <br><br>
                 <label>Año</label><br>
-                <select name="año" required>
+                <select name="anio" required>
                     <?php foreach ($grados as $grado):?>
                         <option value="<?php echo $grado['id'] ?>"><?php echo $grado['nombre'] ?></option>
                     <?php endforeach;?>

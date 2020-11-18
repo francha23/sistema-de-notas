@@ -15,6 +15,11 @@ $grados = $conn->prepare("select * from grados");
 $grados->execute();
 $grados = $grados->fetchAll();
 
+//consulta las carreras
+$carreras = $conn->prepare("select * from carreras order by nombre asc");
+$carreras->execute();
+$carreras = $carreras->fetchAll();
+
 //consulta las secciones
 $secciones = $conn->prepare("select * from secciones");
 $secciones->execute();
@@ -54,25 +59,30 @@ $secciones = $secciones->fetchAll();
                ?>
 
             <form method="get" class="form" action="notas.view.php">
-                <label>Seleccione el Año</label><br>
-                <select name="grado" required>
-                    <?php foreach ($grados as $grado):?>
-                        <option value="<?php echo $grado['id'] ?>"><?php echo $grado['nombre'] ?></option>
-                    <?php endforeach;?>
-                </select>
-                <label>Seleccione la Carera</label><br>
+                <label>Seleccione las Carreras</label><br>
                 <select name="carrera" required>
-                    <?php foreach ($carrera as $gcarrera):?>
-                        <option value="<?php echo $carrera['id'] ?>"><?php echo $carrera['nombre'] ?></option>
+                    <?php foreach ($carreras as $carrera):?>
+                        <option value="<?php echo $carrera['idcarrera'] ?>"><?php echo $carrera['nombre'] ?></option>
                     <?php endforeach;?>
-                </select>
-                <br><br>
+                </select>  
                 <label>Seleccione la Materia</label><br>
                 <select name="materia" required>
                     <?php foreach ($materias as $materia):?>
                         <option value="<?php echo $materia['id'] ?>"><?php echo $materia['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>
+
+
+
+
+                <label>Seleccione el Año</label><br>
+                <select name="grado" required>
+                    <?php foreach ($grados as $grado):?>
+                        <option value="<?php echo $grado['id'] ?>"><?php echo $grado['nombre'] ?></option>
+                    <?php endforeach;?>
+                </select>
+
+                <br><br>
 
                 <br><br>
                 <label>Seleccione la Sección</label><br>
