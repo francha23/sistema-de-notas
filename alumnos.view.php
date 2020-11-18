@@ -9,6 +9,11 @@ $secciones = $conn->prepare("select * from secciones");
 $secciones->execute();
 $secciones = $secciones->fetchAll();
 
+//consulta las carreras
+$carreras = $conn->prepare("select * from carrera");
+$carreras->execute();
+$carreras = $carreras->fetchAll();
+
 //consulta de grados
 $grados = $conn->prepare("select * from grados");
 $grados->execute();
@@ -56,9 +61,9 @@ $grados = $grados->fetchAll();
                 <label>Sexo</label><br><input required type="radio" name="genero" value="M"> Masculino
                 <input type="radio" name="genero" required value="F"> Femenino
                 <br><br>
-                <label>Carrera</label><br>
-                <select name="carrera" required>
-                    <?php foreach ($carrera as $carrera):?>
+                <label>Carreras</label><br>
+                <select name="carreras" required>
+                    <?php foreach ($carreras as $carrera):?>
                         <option value="<?php echo $carrera['id'] ?>"><?php echo $carrera['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>
