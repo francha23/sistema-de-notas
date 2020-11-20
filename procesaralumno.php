@@ -18,7 +18,7 @@ else {
     //insertar es el nombre del boton guardar que esta en el archivo alumnos.view.php
     if (isset($_POST['insertar'])){
 
-        $result = $conn->query("insert into alumnos (num_lista, nombres, apellidos, genero, id_anio, id_seccion, id_carrera) values ('$numlista', '$nombres', '$apellidos', '$genero', '$idanio', '$idseccion', '$idcarrera')");
+        $result = $conn->query("insert into alumnos (num_lista, nombres, apellidos, genero, id_grado, id_seccion, id_carrera) values ('$numlista', '$nombres', '$apellidos', '$genero', '$idanio', '$idseccion', '$idcarrera')");
         if (isset($result)) {
             header('location:alumnos.view.php?info=1');
         } else {
