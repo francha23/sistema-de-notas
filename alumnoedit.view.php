@@ -17,7 +17,7 @@ if(isset($_GET['id'])) {
     $secciones = $secciones->fetchAll();
 
 //consulta de carreras
-    $carrera = $conn->prepare("select * from carrera");
+    $carrera = $conn->prepare("select * from carreras");
     $carrera->execute();
     $carrera = $carrera->fetchAll();
 
@@ -68,22 +68,23 @@ if(isset($_GET['id'])) {
                 <label>Apellidos</label><br>
                 <input type="text" required name="apellidos" value="<?php echo $alumno['apellidos']?>" maxlength="45">
                 <br><br>
-                <label>No de Lista</label><br>
-                <input type="number" min="1" class="number" value="<?php echo $alumno['num_lista']?>" name="numlista">
+                <label>No de Carnet</label><br>
+                <input type="text" value="<?php echo $alumno['num_lista']?>" name="numlista">
                 <br><br>
                 <label>Sexo</label><br><input required type="radio" name="genero" <?php if($alumno['genero'] == 'M'){ echo "checked";} ?> value="M"> Masculino
                 <input type="radio" name="genero" required value="F" <?php if($alumno['genero'] == 'F') { echo "checked";} ?>> Femenino
                 <br><br>
                 <label>Carrera</label><br>
-                <select name="Carrera" required>
-                    <?php foreach ($carrera as carrera):?>
-                        <option value="<?php echo $carrera['id'] ?>" <?php if($alumno['idcarrera'] == $carrera['id']) { echo "selected";} ?> ><?php echo $carrera['nombre'] ?></option>
+                <select name="carreras" required>
+                    <?php foreach ($carrera as $carrera):?>
+                        <option value="<?php echo $carrera['idcarrera'] ?>" <?php if($alumno['id_carrera'] == $carrera['idcarrera']) { echo "selected";} ?> ><?php echo $carrera['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>
+                <br><br>
                 <label>Año</label><br>
-                <select name="año" required>
-                    <?php foreach ($año as $año):?>
-                        <option value="<?php echo $año['id'] ?>" <?php if($alumno['id_año'] == $año['id']) { echo "selected";} ?> ><?php echo $año['nombre'] ?></option>
+                <select name="anio" required>
+                    <?php foreach ($grados as $grado):?>
+                        <option value="<?php echo $grado['id'] ?>" <?php if($alumno['id_grado'] == $grado['id']) { echo "selected";} ?> ><?php echo $grado['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>
                 <br><br>
