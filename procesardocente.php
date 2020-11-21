@@ -22,15 +22,15 @@ else {
             header('location:docentes.view.php?err=1');
         }// validación de registro
 
-    //sino boton modificar que esta en el archivo alumnoedit.view.php
+    //sino boton modificar que esta en el archivo docentedit.view.php
     }else if (isset($_POST['modificar'])) {
-        //capturamos el id alumnos a modificar
+        //capturamos el id del docente a modificar
             $id_docente = htmlentities($_POST['id']);
-            $result = $conn->query("update docentes set nombre_docente = $nombres, apellido_apellido = $apellidos, Numdecarnet = $numcarnet, sexo = $sexo where id = " . $id_docente);
+            $result = $conn->query("UPDATE docentes SET nombre_docente = '$nombres', apellido_apellido = '$apellidos', Numdecarnet = '$numcarnet', sexo = '$sexo' where id = " . $id_docente);
             if (isset($result)) {
-                header('location:alumnoedit.view.php?id=' . $id_alumno . '&info=1');
+                header('location:docentesedit.view.php?id=' . $id_docente . '&info=1');
             } else {
-                header('location:alumnoedit.view.php?id=' . $id_alumno . '&err=1');
+                header('location:docentesedit.view.php?id=' . $id_docente . '&err=1');
             }// validación de registro
     }
 

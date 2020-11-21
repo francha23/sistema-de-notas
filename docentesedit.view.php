@@ -45,7 +45,7 @@ if(isset($_GET['id'])) {
 <div class="body">
     <div class="panel">
             <h4>Edición de Docentes</h4>
-            <form method="post" class="form" action="procesaralumno.php">
+            <form method="post" class="form" action="procesardocente.php">
                 <!--colocamos un campo oculto que tiene el id del alumno-->
                 <input type="hidden" value="<?php echo $docente['id']?>" name="id">
                 <label>Nombres</label><br>
