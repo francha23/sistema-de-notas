@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2020 a las 23:38:56
+-- Tiempo de generación: 21-11-2020 a las 21:41:48
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -45,7 +45,8 @@ CREATE TABLE `alumnos` (
 INSERT INTO `alumnos` (`id`, `num_lista`, `nombres`, `apellidos`, `genero`, `id_grado`, `id_seccion`, `id_carrera`) VALUES
 (13, '2147483647', 'Mario Mart&iacute;n', 'Zapata Salgado', 'M', 5, 3, 1),
 (14, '2147483647', 'Misinga', 'Zapata', 'F', 3, 2, 6),
-(15, '20210038080', 'Marvin Jos&eacute;', 'Garc&iacute;a Santamar&iacute;a', 'M', 5, 5, 4);
+(15, '20210038080', 'Marvin Jos&eacute;', 'Garc&iacute;a Santamar&iacute;a', 'M', 5, 1, 4),
+(17, '20210038080', 'Misinga', 'Zapata Salgado', 'F', 5, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -81,9 +82,17 @@ CREATE TABLE `docentes` (
   `id` int(11) NOT NULL,
   `nombre_docente` varchar(50) NOT NULL,
   `apellido_apellido` varchar(50) NOT NULL,
-  `Numdecarnet` int(20) NOT NULL,
+  `Numdecarnet` varchar(8) NOT NULL,
   `sexo` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `docentes`
+--
+
+INSERT INTO `docentes` (`id`, `nombre_docente`, `apellido_apellido`, `Numdecarnet`, `sexo`) VALUES
+(2, 'Mario Martin', 'Zapata Salgado', 'DOC-2025', 'M'),
+(3, 'Oscar Fernado', 'Arostegui', 'DOC-2525', 'M');
 
 -- --------------------------------------------------------
 
@@ -145,6 +154,15 @@ CREATE TABLE `notas` (
   `id_docentes` int(11) NOT NULL,
   `idcarreras` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `notas`
+--
+
+INSERT INTO `notas` (`id`, `nota`, `observaciones`, `id_alumno`, `id_materia`, `id_docentes`, `idcarreras`) VALUES
+(7, '80.00', 'Ninguna', 15, 2, 2, 4),
+(8, '90.00', 'Ninguna', 15, 2, 2, 4),
+(9, '90.00', 'Ninguna', 15, 2, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -259,7 +277,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `carreras`
@@ -271,7 +289,7 @@ ALTER TABLE `carreras`
 -- AUTO_INCREMENT de la tabla `docentes`
 --
 ALTER TABLE `docentes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `grados`
@@ -289,7 +307,7 @@ ALTER TABLE `materias`
 -- AUTO_INCREMENT de la tabla `notas`
 --
 ALTER TABLE `notas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=224;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `secciones`
