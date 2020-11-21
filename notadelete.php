@@ -1,12 +1,11 @@
 <?php
 require 'functions.php';
 if($_SESSION['rol'] =='Administrador') {
-    if (isset($_GET['idalumno']) && isset($_GET['idmateria']) && is_numeric($_GET['idalumno'] && is_numeric($_GET['carrera'])) {
+    if (isset($_GET['idalumno']) && isset($_GET['idmateria']) && is_numeric($_GET['idalumno']) && is_numeric($_GET['idmateria'])) {
         try {
             $id_alumno = $_GET['idalumno'];
             $id_materia = $_GET['idmateria'];
-            $id_carrera = $_GET['carrera'];
-            $alumno = $conn->prepare("delete from notas where id_alumno = " . $id_alumno . " and id_materia = " . $id_materia " and id_carrera =  . $id_carrera");
+            $alumno = $conn->prepare("delete from notas where id_alumno = $id_alumno and id_materia = $id_materia");
             $alumno->execute();
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         } catch (PDOException $e) {

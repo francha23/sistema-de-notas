@@ -145,25 +145,30 @@ $secciones = $secciones->fetchAll();
                                 $notas = $conn->prepare("select id, nota from notas where id_alumno = ".$alumno['id']." and id_materia = ".$id_materia);
                                 $notas->execute();
                                 $notas = $notas->fetchAll();
-
-                                foreach ($notas as $eval => $nota) {
-
-                                    echo '<td align="center"><input type="hidden" 
-                                            name="nota'.$eval.'" value="'. $nota['nota'] . '" >'. $nota['nota'] . '</td>';
-
+                                if($notas) {
+                                    foreach ($notas as $eval => $nota) {
+                                            echo '<td align="center"><input type="hidden" name="nota'.$eval.'" value="'. $nota['nota'] . '" >'. $nota['nota'] . '</td>';
+                                        }
+                                    
+                                }else{
+                                    for ($i = 0; $i < $num_eval; $i++) {
+                                        echo '<td align="center">Sin nota</td>';
+                                    } 
                                 }
 
                             echo '<td align="center">'.number_format($alumno['promedio'], 2).'</td>';
                             //echo '<td><a href="notas.view.php?grado='.$id_grado.'&materia='.$id_materia.'&seccion='.$id_seccion.'">Editar</a> </td>';
                             $promediototal += number_format($alumno['promedio'], 2);
                             echo '<td>'. $alumno['observaciones']. '</td>';
+
+
                             ?>
 
                         </tr>
                     <?php endforeach;?>
                     <tr><td colspan="3"><?php
                         for($i = 0; $i < $num_eval; $i++){
-                            echo '<td><div class="text-center" id="promedio'.$i .'"><div></td>';
+                            echo '<td><div class="text-center" id="promedio'.$i.'"><div></td>';
                         }
                         ?><td align="center"><?php echo number_format($promediototal / $num_alumnos,2) ?></td></tr>
                 </table>

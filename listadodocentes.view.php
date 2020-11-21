@@ -60,7 +60,7 @@ $docentes = $docentes->fetchAll();
             </table>
                 <br><br>
 
-                <a class="btn-link" href="docentes.view.php">Agregar Alumno</a>
+                <a class="btn-link" href="docentes.view.php">Agregar Docente</a>
                 <br><br>
                 <!--mostrando los mensajes que recibe a traves de los parametros en la url-->
                 <?php

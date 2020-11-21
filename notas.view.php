@@ -24,6 +24,11 @@ $carreras = $carreras->fetchAll();
 $secciones = $conn->prepare("select * from secciones");
 $secciones->execute();
 $secciones = $secciones->fetchAll();
+
+//consulta los docentes
+$docentes = $conn->prepare("select * from docentes");
+$docentes->execute();
+$docentes = $docentes->fetchAll();
 ?>
 <html>
 <head>
@@ -43,6 +48,7 @@ $secciones = $secciones->fetchAll();
         <li><a href="alumnos.view.php">Registro de Alumnos</a> </li>
         <li><a href="docentes.view.php">Registro de docentes</a> </li>
         <li><a href="listadoalumnos.view.php">Listado de Alumnos</a> </li>
+        <li><a href="listadodocentes.view.php">Listado de Docentes</a> </li>
         <li><a href="notas.view.php">Registro de Notas</a> </li>
         <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
         
@@ -65,6 +71,14 @@ $secciones = $secciones->fetchAll();
                         <option value="<?php echo $carrera['idcarrera'] ?>"><?php echo $carrera['nombre'] ?></option>
                     <?php endforeach;?>
                 </select>  
+
+                <label>Seleccione el Docente</label><br>
+                <select name="docente" required>
+                    <?php foreach ($docentes as $docente):?>
+                        <option value="<?php echo $docente['id'] ?>"><?php echo $docente['nombre_docente'] ?><?php echo " " ?><?php echo $docente['apellido_apellido'] ?></option>
+                    <?php endforeach;?>
+                </select>  
+
                 <label>Seleccione la Materia</label><br>
                 <select name="materia" required>
                     <?php foreach ($materias as $materia):?>
@@ -105,6 +119,8 @@ $secciones = $secciones->fetchAll();
             $id_materia = $_GET['materia'];
             $id_grado = $_GET['grado'];
             $id_seccion = $_GET['seccion'];
+            $id_docente = $_GET['docente'];
+            $id_carrera = $_GET['carrera'];
 
             //extrayendo el numero de evaluaciones para esa materia seleccionada
             $num_eval = $conn->prepare("select num_evaluaciones from materias where id = ".$id_materia);
@@ -115,7 +131,7 @@ $secciones = $secciones->fetchAll();
 
             //mostrando el cuadro de notas de todos los alumnos del grado seleccionado
             $sqlalumnos = $conn->prepare("select a.id, a.num_lista, a.apellidos, a.nombres, b.nota, avg(b.nota) as promedio, b.observaciones from alumnos as a left join notas as b on a.id = b.id_alumno
- where id_grado = ".$id_grado." and id_seccion = ".$id_seccion." group by a.id");
+            where id_grado = ".$id_grado." and id_seccion = ".$id_seccion." group by a.id");
             $sqlalumnos->execute();
             $alumnos = $sqlalumnos->fetchAll();
             $num_alumnos = $sqlalumnos->rowCount();
@@ -126,6 +142,14 @@ $secciones = $secciones->fetchAll();
             <br>
             <br>
                 <form action="procesarnota.php" method="post">
+                    <input type="hidden" value="<?php echo $num_eval ?>" name="num_eval">
+                    <!-- campos para devolver los parametros en el get y mantener los mismos datos al hacer el header location-->
+                    <input type="hidden" value="<?php echo $id_materia ?>" name="id_materia">
+                    <input type="hidden" value="<?php echo $id_grado ?>" name="id_grado">
+                    <input type="hidden" value="<?php echo $id_seccion ?>" name="id_seccion">
+                    <input type="hidden" value="<?php echo $id_docente ?>" name="id_docente">
+                    <input type="hidden" value="<?php echo $id_carrera ?>" name="id_carrera">
+                    <input type="hidden" value="<?php echo $num_alumnos ?>" name="num_alumnos">
 
             <table class="table" cellpadding="0" cellspacing="0">
                 <tr>
@@ -141,13 +165,9 @@ $secciones = $secciones->fetchAll();
                 </tr>
                 <?php foreach ($alumnos as $index => $alumno) :?>
                     <!-- campos ocultos necesarios para realizar el insert-->
-                    <input type="hidden" value="<?php echo $num_alumnos ?>" name="num_alumnos">
+                    
                     <input type="hidden" value="<?php echo $alumno['id'] ?>" name="<?php echo 'id_alumno'.$index ?>">
-                    <input type="hidden" value="<?php echo $num_eval ?>" name="num_eval">
-                     <!-- campos para devolver los parametros en el get y mantener los mismos datos al hacer el header location-->
-                    <input type="hidden" value="<?php echo $id_materia ?>" name="id_materia">
-                    <input type="hidden" value="<?php echo $id_grado ?>" name="id_grado">
-                    <input type="hidden" value="<?php echo $id_seccion ?>" name="id_seccion">
+                    
                     <tr>
                         <td align="center"><?php echo $alumno['num_lista'] ?></td><td><?php echo $alumno['apellidos'] ?></td>
                         <td><?php echo $alumno['nombres'] ?></td>
@@ -170,8 +190,6 @@ $secciones = $secciones->fetchAll();
                                         echo '<td><input type="text" maxlength="5" value="'.$nota['nota'].'" name="evaluacion' . $i . 'alumno' . $index . '" class="txtnota"></td>';
                                     }
                                 }
-
-
                             }else {
                                 //extrayendo el numero de evaluaciones para esa materia seleccionada
                                 for($i = 0; $i < $num_eval; $i++) {

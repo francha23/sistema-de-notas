@@ -5,7 +5,7 @@ $permisos = ['Administrador','Profesor'];
 permisos($permisos);
 if(isset($_GET['id'])) {
 
-    $id_docente = $_GET['id'];
+    $id_alumno = $_GET['id'];
 
     $alumno = $conn->prepare("select * from alumnos where id = ".$id_alumno);
     $alumno->execute();
@@ -64,10 +64,10 @@ if(isset($_GET['id'])) {
                 <!--colocamos un campo oculto que tiene el id del alumno-->
                 <input type="hidden" value="<?php echo $alumno['id']?>" name="id">
                 <label>Nombres</label><br>
-                <input type="text" required name="nombres" value="<?php echo $alumno['nombres']?>" maxlength="45">
+                <input type="text" required name="nombres" value="<?php echo $alumno['nombres']?>">
                 <br>
                 <label>Apellidos</label><br>
-                <input type="text" required name="apellidos" value="<?php echo $alumno['apellidos']?>" maxlength="45">
+                <input type="text" required name="apellidos" value="<?php echo $alumno['apellidos']?>" >
                 <br><br>
                 <label>No de Carnet</label><br>
                 <input type="text" value="<?php echo $alumno['num_lista']?>" name="numlista">
