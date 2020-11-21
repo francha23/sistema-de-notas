@@ -5,7 +5,7 @@ $permisos = ['Administrador','Profesor'];
 permisos($permisos);
 if(isset($_GET['id'])) {
 
-    $id_alumno = $_GET['id'];
+    $id_docente = $_GET['id'];
 
     $alumno = $conn->prepare("select * from alumnos where id = ".$id_alumno);
     $alumno->execute();
@@ -48,6 +48,7 @@ if(isset($_GET['id'])) {
         <li><a href="alumnos.view.php">Registro de Alumnos</a> </li>
         <li><a href="docentes.view.php">Registro de docentes</a> </li>
         <li><a href="listadoalumnos.view.php">Listado de Alumnos</a> </li>
+        <li><a href="listadodocentes.view.php">Listado de Docentes</a> </li>
         <li><a href="notas.view.php">Registro de Notas</a> </li>
         <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
         

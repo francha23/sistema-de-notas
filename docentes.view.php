@@ -32,6 +32,7 @@ $grados = $grados->fetchAll();
         <li><a href="alumnos.view.php">Registro de Alumnos</a> </li>
         <li><a href="docentes.view.php">Registro de docentes</a> </li>
         <li><a href="listadoalumnos.view.php">Listado de Alumnos</a> </li>
+        <li><a href="listadodocentes.view.php">Listado de Docentes</a> </li>
         <li><a href="notas.view.php">Registro de Notas</a> </li>
         <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
         
@@ -51,10 +52,10 @@ $grados = $grados->fetchAll();
                 <input type="text" required name="apellidosDoc" maxlength="45">
                 <br><br>
                 <label>No de carnet</label><br>
-                <input type="number" min="1" class="number" name="numcarnetDoc">
+                <input type="text" name="numcarnetDoc">
                 <br><br>
-                <label>Sexo</label><br><input required type="radio" name="genero" value="M"> Masculino
-                <input type="radio" name="sexoDoc" required value="F"> Femenino
+                <label>Sexo</label><br><input  type="radio" name="sexoDoc" value="M"> Masculino
+                <input type="radio" name="sexoDoc"  value="F"> Femenino
                 <br><br>
 <!--                 <label>Grado</label><br>
                 <select name="grado" required>
@@ -70,7 +71,7 @@ $grados = $grados->fetchAll();
                     <?php endforeach;?> -->
 
                 <br><br>
-                <button type="submit" name="insertadoc">Guardar</button> <button type="reset">Limpiar</button> <a class="btn-link" href="listadodocentes.view.php">Ver Listado</a>
+                <button type="submit" name="insertarDoc">Guardar</button> <button type="reset">Limpiar</button> <a class="btn-link" href="listadodocentes.view.php">Ver Listado</a>
                 <br><br>
                 <!--mostrando los mensajes que recibe a traves de los parametros en la url-->
                 <?php

@@ -9,6 +9,7 @@ permisos($permisos);
 <head>
 <title>Inicio | Registro </title>
     <meta name="description" content="Registro  Sis Universidad Martin Lutero Quilali" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css" />
 
 </head>
@@ -23,6 +24,7 @@ permisos($permisos);
         <li><a href="alumnos.view.php">Registro de Alumnos</a> </li>
         <li><a href="docentes.view.php">Registro de docentes</a> </li>
         <li><a href="listadoalumnos.view.php">Listado de Alumnos</a> </li>
+        <li><a href="listadodocentes.view.php">Listado de Docentes</a> </li>
         <li><a href="notas.view.php">Registro de Notas</a> </li>
         <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
         
