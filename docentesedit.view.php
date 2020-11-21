@@ -5,26 +5,11 @@ $permisos = ['Administrador','Profesor'];
 permisos($permisos);
 if(isset($_GET['id'])) {
 
-    $id_alumno = $_GET['id'];
+    $id_docente = $_GET['id'];
 
-    $alumno = $conn->prepare("select * from alumnos where id = ".$id_alumno);
-    $alumno->execute();
-    $alumno = $alumno->fetch();
-
-//consulta las secciones
-    $secciones = $conn->prepare("select * from secciones");
-    $secciones->execute();
-    $secciones = $secciones->fetchAll();
-
-//consulta de carreras
-    $carrera = $conn->prepare("select * from carreras");
-    $carrera->execute();
-    $carrera = $carrera->fetchAll();
-
-//consulta de grados
-    $grados = $conn->prepare("select * from grados");
-    $grados->execute();
-    $grados = $grados->fetchAll();
+    $docente = $conn->prepare("select * from docentes where id = ".$id_docente);
+    $docente->execute();
+    $docente = $docente->fetch();
 
 }else{
     Die('Ha ocurrido un error');
@@ -48,6 +33,7 @@ if(isset($_GET['id'])) {
         <li><a href="alumnos.view.php">Registro de Alumnos</a> </li>
         <li><a href="docentes.view.php">Registro de docentes</a> </li>
         <li><a href="listadoalumnos.view.php">Listado de Alumnos</a> </li>
+        <li><a href="listadodocentes.view.php">Listado de Docentes</a> </li>
         <li><a href="notas.view.php">Registro de Notas</a> </li>
         <li><a href="listadonotas.view.php">Consulta de Notas</a> </li>
         
@@ -58,44 +44,23 @@ if(isset($_GET['id'])) {
 
 <div class="body">
     <div class="panel">
-            <h4>Edición de Alumnos</h4>
+            <h4>Edición de Docentes</h4>
             <form method="post" class="form" action="procesaralumno.php">
                 <!--colocamos un campo oculto que tiene el id del alumno-->
-                <input type="hidden" value="<?php echo $alumno['id']?>" name="id">
+                <input type="hidden" value="<?php echo $docente['id']?>" name="id">
                 <label>Nombres</label><br>
-                <input type="text" required name="nombres" value="<?php echo $alumno['nombres']?>" maxlength="45">
+                <input type="text" required name="nombresDoc" value="<?php echo $docente['nombre_docente']?>" maxlength="45">
                 <br>
                 <label>Apellidos</label><br>
-                <input type="text" required name="apellidos" value="<?php echo $alumno['apellidos']?>" maxlength="45">
+                <input type="text" required name="apellidosDoc" value="<?php echo $docente['apellido_apellido']?>" maxlength="45">
                 <br><br>
                 <label>No de Carnet</label><br>
-                <input type="text" value="<?php echo $alumno['num_lista']?>" name="numlista">
+                <input type="text" value="<?php echo $docente['Numdecarnet']?>" name="numcarnetDoc">
                 <br><br>
-                <label>Sexo</label><br><input required type="radio" name="genero" <?php if($alumno['genero'] == 'M'){ echo "checked";} ?> value="M"> Masculino
-                <input type="radio" name="genero" required value="F" <?php if($alumno['genero'] == 'F') { echo "checked";} ?>> Femenino
+                <label>Sexo</label><br><input required type="radio" name="sexoDoc" <?php if($docente['sexo'] == 'M'){ echo "checked";} ?> value="M"> Masculino
+                <input type="radio" name="sexoDoc" required value="F" <?php if($docente['sexo'] == 'F') { echo "checked";} ?>> Femenino
                 <br><br>
-                <label>Carrera</label><br>
-                <select name="carreras" required>
-                    <?php foreach ($carrera as $carrera):?>
-                        <option value="<?php echo $carrera['idcarrera'] ?>" <?php if($alumno['id_carrera'] == $carrera['idcarrera']) { echo "selected";} ?> ><?php echo $carrera['nombre'] ?></option>
-                    <?php endforeach;?>
-                </select>
-                <br><br>
-                <label>Año</label><br>
-                <select name="anio" required>
-                    <?php foreach ($grados as $grado):?>
-                        <option value="<?php echo $grado['id'] ?>" <?php if($alumno['id_grado'] == $grado['id']) { echo "selected";} ?> ><?php echo $grado['nombre'] ?></option>
-                    <?php endforeach;?>
-                </select>
-                <br><br>
-                <label>Seccion</label><br>
-
-                    <?php foreach ($secciones as $seccion):?>
-                        <input type="radio" name="seccion" <?php if($alumno['id_seccion'] == $seccion['id']) { echo "checked";} ?> required value="<?php echo $seccion['id'] ?>">Seccion <?php echo $seccion['nombre'] ?>
-                    <?php endforeach;?>
-
-                <br><br>
-                <button type="submit" name="modificar">Guardar Cambios</button> <a class="btn-link" href="listadoalumnos.view.php">Ver Listado</a>
+                <button type="submit" name="modificar">Guardar Cambios</button> <a class="btn-link" href="listadodocentes.view.php">Ver Listado</a>
                 <br><br>
                 <!--mostrando los mensajes que recibe a traves de los parametros en la url-->
                 <?php
