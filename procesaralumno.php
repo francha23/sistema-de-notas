@@ -6,6 +6,7 @@ else {
     //incluimos el archivo funciones que tiene la conexion
     require 'functions.php';
     //Recuperamos los valores que vamos a llenar en la BD
+
     $nombres = htmlentities($_POST ['nombres']);
     $apellidos = htmlentities($_POST ['apellidos']);
     $numlista = htmlentities($_POST['numlista']);
@@ -18,7 +19,7 @@ else {
     //insertar es el nombre del boton guardar que esta en el archivo alumnos.view.php
     if (isset($_POST['insertar'])){
 
-        $result = $conn->query("insert into alumnos (num_lista, nombres, apellidos, genero, id_grado, id_seccion, id_carrera) values ('$numlista', '$nombres', '$apellidos', '$genero', '$idanio', '$idseccion', '$idcarrera')");
+        $result = $conn->query("INSERT INTO alumnos (num_lista, nombres, apellidos, genero, id_grado, id_seccion, id_carrera) VALUES ('$numlista', '$nombres', '$apellidos', '$genero', '$idanio', '$idseccion', '$idcarrera')");
         if (isset($result)) {
             header('location:alumnos.view.php?info=1');
         } else {
@@ -29,7 +30,7 @@ else {
     }else if (isset($_POST['modificar'])) {
         //capturamos el id alumnos a modificar
             $id_alumno = htmlentities($_POST['id']);
-            $result = $conn->query("update alumnos set num_lista = '$numlista', nombres = '$nombres', apellidos = '$apellidos', genero = '$genero', id_grado = '$idanio,'id_seccion = '$idseccion', id_carrera = '$idcarrera' where id = " . $id_alumno);
+            $result = $conn->query("UPDATE alumnos SET num_lista = '$numlista', nombres = '$nombres', apellidos = '$apellidos', genero = '$genero', id_grado = '$idanio', id_seccion = '$idseccion', id_carrera = '$idcarrera' WHERE id = " . $id_alumno);
             if (isset($result)) {
                 header('location:alumnoedit.view.php?id=' . $id_alumno . '&info=1');
             } else {
