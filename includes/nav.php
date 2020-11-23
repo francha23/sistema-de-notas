@@ -1,5 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="inicio.view.php">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary" style="border-bottom:5px solid #d5e119">
+      <a class="navbar-brand" href="inicio.view.php" style="margin: -8px 0px -8px -16px;
+    background: white;
+    box-shadow: -3px -10px 10px 6px #0000008c;
+    padding: 10px;">
         <img width="150" src="imagenes/logoUML.png" alt="" class="d-inline-block align-center"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -16,8 +19,9 @@
               Reportes
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="listadoalumnos.view.php">Lista Alumnos</a>
-              <a class="dropdown-item" href="listadodocentes.view.php">Lista Docentes</a>
+              <a class="dropdown-item" href="listadoalumnos.view.php">Lista de Alumnos</a>
+              <a class="dropdown-item" href="listadodocentes.view.php">Lista de Docentes</a>
+              <a class="dropdown-item" href="listadonotas.view.php">Lista de Notas</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -59,3 +63,8 @@
         </ul>
       </div>
     </nav>
+    <style>
+      .container{
+        margin-top: 50px;
+      }
+    </style>
